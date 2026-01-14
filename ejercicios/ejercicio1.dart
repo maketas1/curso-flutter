@@ -26,7 +26,7 @@ Soy estudiante de Dart en el curso de Getafe
   print(texto2);
 }
 
-void ejercicio3_3() {
+void ejercicio1_3() {
   print("Ejercicio 1.3");
   String nombre = "Windows";
   double precio = 300;
@@ -151,10 +151,32 @@ void ejercicio3_1() {
 
 String _obtenerHostname() => 'localhost';
 
+void ejercicio3_2() {
+  print("Ejercicio3.2");
+  Object lecturaSensor = 'Temperatura: 25.5°C'; // Datos normales
+  dynamic datosFlexibles = 1000; // Lecturas del sensor
+  
+  lecturaSensor = 25.5;
+  datosFlexibles = 26.3;
+  datosFlexibles = 'ERROR_SENSOR';
+  datosFlexibles = null;
+  
+  Object? datosOpcionales = null; // Puede ser null
+  // Object datosNoNulos = null; // ¿Por qué falla?
+  
+  print('Lectura del sensor: $lecturaSensor');
+  print('Datos flexibles: $datosFlexibles');
+}
+
+void ejercicio3_3() {
+  print("Ejercicio 3.3");
+  
+}
+
 void main(List<String> arg) {
   ejercicio1_1();
   ejercicio1_2(arg);
-  ejercicio3_3();
+  ejercicio1_3();
   ejercicio1_4();
   ejercicio2_1();
   ejercicio2_2();
