@@ -4,7 +4,7 @@ double calcularPrecioConIva(double precio, double iva) {
   return resultado;
 }
 
-void main(List<String> arg) {
+void ejercicio1_1() {
   print("Ejercicio 1.1");
   String texto1 = '''
 -------------------------------------
@@ -14,19 +14,20 @@ Este es in lenguaje versátil y moderno.
 Prepárate para aprender programación''';
 
   print(texto1);
-  print('''
+}
 
-Ejercicio 1.2''');
-
+void ejercicio1_2 (List<String> arg) {
+  print("Ejercicio 1.2");
   String texto2 = '''
 Hola, mi nombre es ${arg.isNotEmpty ? arg[0] : "invitado"}
 Tengo ${arg.isNotEmpty ? arg[1] : "desconocido "} años
 Soy estudiante de Dart en el curso de Getafe
 ''';
   print(texto2);
-  print('''
+}
 
-Ejercicio 1.3''');
+void ejercicio3_3() {
+  print("Ejercicio 1.3");
   String nombre = "Windows";
   double precio = 300;
   int cantidad = 10;
@@ -36,10 +37,10 @@ Ejercicio 1.3''');
   print('Precio: €$precio');
   print('Stock: $cantidad unidades');
   print('Disponible: $disponible');
-  
-  print('''
+}
 
-Ejercicio 1.4''');
+void ejercicio1_4() {
+  print("Ejercicio 1.4");
   var temperaturaActual = 25;
   //temperaturaActual = 25.5;
   
@@ -50,19 +51,19 @@ Ejercicio 1.4''');
   
   print('Temperatura actual: $temperaturaActual°C');
   print('Lectura flexible: $lecturaTemperatura');
+}
 
-  print('''
-
-Ejercicio 2.1''');
+void ejercicio2_1() {
+  print("Ejercicio 2.1");
   double precioBase = 150;
   double iva = 21;
   print('Precio base: €$precioBase');
   print('IVA ($iva%): €${(precioBase * iva / 100).toStringAsFixed(2)}');
   print('Precio final: €${calcularPrecioConIva(precioBase, iva)}');
+}
 
-  print('''
-
-Ejercicio 2.2''');
+void ejercicio2_2() {
+  print("Ejercicio 2.2");
   List<double> notas = [8.5, 7.2, 9.1, 6.8, 8.9];
   notas.add(8.3);
   print("Notas " + notas.toString());
@@ -78,10 +79,10 @@ Ejercicio 2.2''');
   print("Estudiantes que aprobaron: " + aprobados.toString());
   double media = sumaTotal / notas.length;
   print("Nota promedio: " + media.toString());
+}
 
-  print('''
-
-Ejercicio 2.3''');
+void ejercicio2_3() {
+  print("Ejercicio 2.3");
   Map<String, double> libreria = {
     'Don Quijote': 15.99,
     'Cien años de soledad': 18.50,
@@ -96,10 +97,10 @@ Ejercicio 2.3''');
   print('Precios: ${libreria.values}');
   print('Precio de Don Quijote: €${libreria['Don Quijote']}');
   print("Total de la libreria: " + total.toString() + "€");
+}
 
-  print('''
-
-Ejercicio 2.4''');
+void ejercicio2_4() {
+  print("Ejercicio 2.4");
   Set<String> lenguajes = {"Java", "Dart", "Python", "C++"};
   lenguajes.add("Java");
   print('Lenguajes: $lenguajes');
@@ -108,10 +109,10 @@ Ejercicio 2.4''');
   lenguajes.add("C#");
   lenguajes.add("C");
   print('Lenguajes: $lenguajes');
+}
 
-  print('''
-
-Ejercicio 2.5''');
+void ejercicio2_5() {
+  print("Ejercicio 2.5");
   String proyectoDescripcion = '''
     ╔═════════════════════════════════════════════╗
     ║      GESTOR DE TAREAS - PROYECTO DART       ║
@@ -129,9 +130,17 @@ Ejercicio 2.5''');
   ''';
   
   print(proyectoDescripcion);
+}
 
-  print('''
-
-Ejercicio 3.1''');
+void main(List<String> arg) {
+  ejercicio1_1();
+  ejercicio1_2(arg);
+  ejercicio3_3();
+  ejercicio1_4();
+  ejercicio2_1();
+  ejercicio2_2();
+  ejercicio2_3();
+  ejercicio2_4();
+  ejercicio2_5();
 
 }
