@@ -132,6 +132,25 @@ void ejercicio2_5() {
   print(proyectoDescripcion);
 }
 
+void ejercicio3_1() {
+  print("Ejercicio 3.1");
+  const int puerto = 8080; // Configuración fija en compilación
+  const String version = '1.0.0';
+  const String autor = 'Tu Nombre';
+  
+  final DateTime fechaInicio = DateTime.now(); // Evaluado al ejecutarse
+  final String hostname = _obtenerHostname(); // Se ejecuta al correr
+  
+  print('=== CONFIGURACIÓN DE APLICACIÓN ===');
+  print('Puerto: $puerto');
+  print('Versión: $version');
+  print('Autor: $autor');
+  print('Inicio: $fechaInicio');
+  print('Host: $hostname');
+}
+
+String _obtenerHostname() => 'localhost';
+
 void main(List<String> arg) {
   ejercicio1_1();
   ejercicio1_2(arg);
@@ -142,5 +161,5 @@ void main(List<String> arg) {
   ejercicio2_3();
   ejercicio2_4();
   ejercicio2_5();
-
+  ejercicio3_1();
 }
