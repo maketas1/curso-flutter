@@ -37,7 +37,7 @@ void ejercicio2() {
   String? anioStr = stdin.readLineSync();
   int? anio = int.tryParse(anioStr ?? '0');
   DateTime fecha = DateTime.utc(anio!, 03, 00);
-    
+
   if (anio == null || anio <= 0) {
     print('❌ Año inválido');
     return;
@@ -263,8 +263,8 @@ void ejercicio5() {
   int notables = 0;
   int aprobados = 0;
   int suspensos = 0;
-  double notaMax = 0.0;
-  double notaMin = 0.0;
+  double notaMax = notas[0];
+  double notaMin = notas[0];
   for(double nota in notas) {
     promedio += nota;
     if(nota > notaMax) {
