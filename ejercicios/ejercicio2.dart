@@ -234,9 +234,72 @@ void ejercicio4() {
   }
 }
 
+void ejercicio5() {
+  print('=== ANALIZADOR DE CALIFICACIONES ===\n');
+  
+  List<double> notas = [];
+  
+  // Leer 5 calificaciones
+  for (int i = 1; i <= 5; i++) {
+    stdout.write('Ingresa la calificación $i (0-10): ');
+    String? notaStr = stdin.readLineSync();
+    double? nota = double.tryParse(notaStr ?? '0');
+    
+    if (nota == null || nota < 0 || nota > 10) {
+      print('❌ Calificación inválida. Usa valores entre 0 y 10.');
+      i--; // Repetir esta iteración
+      continue;
+    }
+    
+    notas.add(nota);
+  }
+
+  double promedio = 0;
+  int sobresalientes = 0;
+  int notables = 0;
+  int aprobados = 0;
+  int suspensos = 0;
+  double notaMax = 0.0;
+  double notaMin = 0.0;
+  for(double nota in notas) {
+    promedio += nota;
+    if(nota > notaMax) {
+      notaMax = nota;
+    } else if(nota < notaMin) {
+      notaMin = nota;
+    }
+
+    if(nota >= 9) {
+      sobresalientes++;
+    } else if(nota >= 7) {
+      notables++;
+    } else if(nota >= 5) {
+      aprobados++;
+    } else {
+      suspensos++;
+    }
+  }
+  promedio /= notas.length;
+
+  print('\n╔════════════════════════════════════════╗');
+  print('           REPORTE DE CALIFICACIONES     ');
+  print('╚════════════════════════════════════════╝');
+  print('Calificaciones: ${notas.join(', ')}');
+  print('Promedio: ${promedio.toStringAsFixed(2)}');
+  print("Nota maxima: $notaMax");
+  print("Nota minima: $notaMin");
+  print("Sobresalientes: $sobresalientes");
+  print("Notables: $notables");
+  print("Aprobados: $aprobados");
+  print("Suspensos: $suspensos");
+  String resultado = (promedio >= 5) ? '✅ APROBADO' : '❌ SUSPENSO';
+  print("Resultado: $resultado");
+}
+
 void main() {
   ejercicio1();
   ejercicio2();
   ejercicio3();
   ejercicio4();
+  ejercicio5();
 }
