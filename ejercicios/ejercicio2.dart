@@ -8,8 +8,8 @@ void ejercicio1() {
   if (cuenta == null || cuenta <= 0) {
     print('❌ Cantidad inválida');
     return;
-  } else {
-    stdout.write('Calidad del servicio (excelente/bueno/regular): ');
+  }
+  stdout.write('Calidad del servicio (excelente/bueno/regular): ');
     String? servicio = stdin.readLineSync()?.toLowerCase();
     
     switch(servicio) {
@@ -26,7 +26,6 @@ void ejercicio1() {
         print("Valor no permitido");
         break;
     }
-  }
 }
 
 void ejercicio1_1(int porcentaje, double cuenta) {
