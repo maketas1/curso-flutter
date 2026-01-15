@@ -36,7 +36,8 @@ void ejercicio2() {
   stdout.write('Ingresa un año: ');
   String? anioStr = stdin.readLineSync();
   int? anio = int.tryParse(anioStr ?? '0');
-  
+  DateTime fecha = DateTime.utc(anio!, 03, 00);
+    
   if (anio == null || anio <= 0) {
     print('❌ Año inválido');
     return;
@@ -44,13 +45,16 @@ void ejercicio2() {
 
   bool esBisiesto = false;
 
-  if(anio%4 == 0 && anio%100 != 0) {
-    esBisiesto = true;
-  } else if(anio%400 != 0 && anio%100 == 0) {
+  if(fecha.day == 28) {
     esBisiesto = false;
-  } else if(anio%400 == 0) {
-    esBisiesto = true;
   }
+  // if(anio%4 == 0 && anio%100 != 0) {
+  //   esBisiesto = true;
+  // } else if(anio%400 != 0 && anio%100 == 0) {
+  //   esBisiesto = false;
+  // } else if(anio%400 == 0) {
+  //   esBisiesto = true;
+  // }
 
   if(esBisiesto == true) {
     print("El año: $anio es bisiesto");
