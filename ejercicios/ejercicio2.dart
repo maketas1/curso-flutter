@@ -185,8 +185,8 @@ class ConversorPeso {
   void mostrarConversiones() {
     print('\n=== CONVERSIONES DE PESO ===');
     print("${kilogramos.toStringAsFixed(2)} km");
-    print("${aGramos().toStringAsFixed(2)} km");
-    print("${aLibras().toStringAsFixed(2)} km");
+    print("${aGramos().toStringAsFixed(2)} g");
+    print("${aLibras().toStringAsFixed(2)} l");
   }
 }
 
