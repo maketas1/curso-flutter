@@ -10,22 +10,15 @@ void ejercicio1() {
     return;
   }
   stdout.write('Calidad del servicio (excelente/bueno/regular): ');
-    String? servicio = stdin.readLineSync()?.toLowerCase();
+  String? servicio = stdin.readLineSync()?.toLowerCase();
     
-    switch(servicio) {
-      case "excelente":
-        ejercicio1_1(20, cuenta);
-        break;
-      case "bueno":
-        ejercicio1_1(15, cuenta);
-        break;
-      case "regular":
-        ejercicio1_1(10, cuenta);
-        break;
-      default:
-        print("Valor no permitido");
-        break;
-    }
+  int porcentaje = (servicio=="excelente") ? 20 : (servicio=="bueno") ? 15 : (servicio=="regular") ? 10 : 0;
+
+  if(porcentaje == 0) {
+    print("Valor no permitido");
+  } else {
+    ejercicio1_1(porcentaje, cuenta);
+  }
 }
 
 void ejercicio1_1(int porcentaje, double cuenta) {
@@ -67,7 +60,7 @@ void ejercicio2() {
 }
 
 void ejercicio3() {
-  
+
 }
 
 void main() {
