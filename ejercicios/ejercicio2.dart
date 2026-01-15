@@ -148,12 +148,95 @@ void ejercicio3() {
   
 }
 
-void ejercicio4() {
+class ConversorTemperatura {
+  double celsius = 0.0;
+  
+  double aFahrenheit() => (celsius * 9/5) + 32;
+  double aKelvin() => celsius + 273.15;
+  
+  void mostrarConversiones() {
+    print('\n=== CONVERSIONES DE TEMPERATURA ===');
+    print('${celsius.toStringAsFixed(2)} °C');
+    print('${aFahrenheit().toStringAsFixed(2)} °F');
+    print('${aKelvin().toStringAsFixed(2)} K');
+  }
+}
 
+class ConversorDistancia {
+  double kilometros = 0.0;
+  
+  double aMetros() => kilometros * 1000;
+  double aMillas() => kilometros * 0.621371; 
+  
+  void mostrarConversiones() {
+    print('\n=== CONVERSIONES DE DISTANCIA ===');
+    print("${kilometros.toStringAsFixed(2)} km");
+    print("${aMetros().toStringAsFixed(2)} m");
+    print("${aMillas().toStringAsFixed(2)} km");
+  }
+}
+
+class ConversorPeso {
+  double kilogramos = 0.0;
+  
+  double aGramos() => kilogramos * 1000;
+  double aLibras() => kilogramos * 2.20462;
+  
+  void mostrarConversiones() {
+    print('\n=== CONVERSIONES DE PESO ===');
+    print("${kilogramos.toStringAsFixed(2)} km");
+    print("${aGramos().toStringAsFixed(2)} km");
+    print("${aLibras().toStringAsFixed(2)} km");
+  }
+}
+
+void ejercicio4() {
+  print('=== CONVERSOR DE UNIDADES ===\n');
+  print('1. Temperatura');
+  print('2. Distancia');
+  print('3. Peso');
+  stdout.write('\nSelecciona una opción: ');
+  String? opcion = stdin.readLineSync();
+
+  if(opcion == null) {
+    print('❌ Valor inválido');
+    return;
+  }
+  
+  stdout.write('Ingresa el valor: ');
+  String? valorStr = stdin.readLineSync();
+  double? valor = double.tryParse(valorStr ?? '0');
+  
+  if (valor == null) {
+    print('❌ Valor inválido');
+    return;
+  }
+
+  switch(opcion.toLowerCase()) {
+    case "temperatura":
+      ConversorTemperatura tempreatura = ConversorTemperatura()
+      ..celsius = valor
+      ..mostrarConversiones();
+      break;
+    case "distancia":
+      ConversorDistancia distancia = ConversorDistancia()
+      ..kilometros = valor
+      ..mostrarConversiones();
+      break;
+    case "peso":
+      ConversorPeso peso = ConversorPeso()
+      ..kilogramos = valor
+      ..mostrarConversiones();
+      break;
+    default:
+      print("Opcion no valida");
+      break;
+  }
 }
 
 void main() {
   ejercicio1();
   ejercicio2();
   ejercicio3();
+  ejercicio4();
 }
