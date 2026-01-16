@@ -78,4 +78,17 @@ void main() {
     print("Valor no permitido");
     break;
   }
+
+  // for in. iterar listas
+  List<String> frutas = ["Manzana", "Platano", "Naranja"];
+  for(String fruta in frutas) {
+    print(fruta);
+  }
+
+  //For anidado
+  for(int i = 1; i <= 3; i++) {
+    for(int j = 1; j <=3; j++) {
+      print("[$i, $j]");
+    }
+  }
 }
