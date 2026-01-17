@@ -76,5 +76,5 @@ void flechaIxquierda() {
 }
 
 void main() {
-  flechaIxquierda();
+  arbolito();
 }
