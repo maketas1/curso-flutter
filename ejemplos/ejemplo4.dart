@@ -69,7 +69,7 @@ void main() {
   //Funciones anonimas. forma corta o funcion flecha
   // (parametro) => expresion;
 
-  var valor3 = (numero)=> numero * 2;
+  //var valor3 = (numero)=> numero * 2;
 
   List<int> numeros = [12, 1, 11, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   numeros.forEach (
@@ -89,7 +89,7 @@ void main() {
 
   //Assert (solo funciona en modo depuracion)
   //si la condicion es falsa lanza una excepcion y detiene la ejecucion
-  int velocidad = 140;
+  int velocidad = 120;
   print("Provando assert");
   assert(
     velocidad <= 120, "Velocidad excede limite"
@@ -97,4 +97,46 @@ void main() {
 
   print("Velocidad valida: $velocidad km/horas");
 
+  //Switch con multiples condiciones                  
+  int mes = 12;
+  String estacion = switch(mes) {
+    12 || 1 || 2 => "Invierno",
+    3 || 4 || 5 => "Primavera",
+    6 || 7 || 8 => "Verano",
+    9 || 10 || 11 => "Otoño",
+    _ => "Mes invalido"
+  };
+
+  print("Mes $mes: $estacion");
+
+  //Switch con records
+  //Records. Almacena datos de cualquier tipo, pero no se puede modificar
+  //Record posicionales
+  var coordenadas = (10, 12, 15, "Manolo");
+
+  print(coordenadas.$1);
+  print(coordenadas.$2);
+  print(coordenadas.$3);
+  print(coordenadas.$4);
+  
+  //Record nombrados
+  var usuario = (nombre: "Ana", edad : 30);
+  print("Nombre: ${usuario.nombre} y edad ${usuario.edad}");
+
+  //Recods mixtos
+  var datos = ("Felipe", edad: 44, true);
+  print(datos.$1);
+  print(datos.edad);
+  print(datos.$2);
+
+  var coordenada = (2, 3);
+  String cuadrante = switch(coordenada) {
+    (int x, int y) when x > 0 && y > 0 => "Cuadrante I",
+    (int x, int y) when x < 0 && y > 0 => "Cuadrante II",
+    (int x, int y) when x < 0 && y < 0 => "Cuadrante III",
+    (int x, int y) when x > 0 && y < 0 => "Cuadrante IV",
+    _ => "Sobre un eje"
+  };
+
+  print(cuadrante);
 }
