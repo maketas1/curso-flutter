@@ -71,6 +71,69 @@ void ejericicio1() {
   print("💵 TOTAL A PAGAR: €${total - descuento}");
 }
 
+void ejercicio2() {
+  //String texto ="Tu madre tiene una polla que ya la quisiera yo. Me dio pena por tu padre el dia que se entero";
+  String texto = "Dart es un lenguaje de programacion moderno y versatil";
+
+  List<String> palabras = texto.split(" ");
+  List<String> caracteres = texto.split("");
+  
+  int a = 0;
+  int e = 0;
+  int i = 0;
+  int o = 0;
+  int u = 0;
+  int vocales = 0;
+  int consonantes = 0;
+  for(String caracter in caracteres) {
+    switch(caracter.toLowerCase()){
+      case "a":
+        a++; vocales++; break;
+      case "e":
+        e++; vocales++; break;
+      case "i":
+        i++; vocales++; break;
+      case "o":
+        o++; vocales++; break;
+      case "u":
+        u++; vocales++; break;
+      case " ":
+        break;
+      default:
+        consonantes++; break;
+    }
+  }
+
+  print("📝 Texto: $texto");
+  print("📊 ESTADÍSTICAS GENERALES:");
+  print("✓ Total de caracteres: ${caracteres.length}");
+  print("✓ Total de palabras: ${palabras.length}");
+  print("✓ Total de vocales: $vocales");
+  print("✓ Total de consonantes: $consonantes");
+  String palabraMasLarga = "";
+  String palabraMasCorta = "";
+  int max = 0;
+  int min = 100;
+  for(String palabra in palabras) {
+    List<String> cadena = palabra.split("");
+    if(cadena.length < min) {
+      
+    }
+  }
+
+  print("🔤 CONTEO DE VOCALES:");
+  print('''
+a: $a veces
+e: $e veces
+i: $i veces
+o: $o veces
+u: $u veces
+''');
+}
+
 void main() {
+  print("Ejercicio 1");
   ejericicio1();
+  print("Ejercicio 2");
+  ejercicio2();
 }
