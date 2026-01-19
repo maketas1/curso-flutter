@@ -139,4 +139,42 @@ void main() {
   };
 
   print(cuadrante);
+
+  //Iteracion con indice valor de una lista
+  List<String> colores = ["Rojo", "Azul", "Verde", "Naranja"];
+  for(int x = 0; x < colores.length; x++) {
+    print("Indice: ${x + 1}, valor: ${colores[x]}");
+  }
+
+  print("==========================");
+  //indexed devuelve un iterable de records de una lista (indice, valor)
+  //con desttructuring
+  for(var (index, color) in colores.indexed) print("${index + 1}: $color");
+  print("==========================");
+  //sin destructuring
+  for(var record in colores.indexed) {
+    print("${record.$1}: ${record.$2}");
+  }
+
+  //Contron de flujos con try - catch
+  //trhow: lanza una excepcion y nos para el programa
+  //try: bloque que contiene codigo que puede fallar
+  //catch(e): manejo de la excepcion. captura la excepcion en la variable e
+  //finally: se ejecuta siempre, haya error o no
+
+  int dividir (int a, int b) {
+    if (b == 0 || a == 0) throw Exception("Division por cero no permitida");
+    return a ~/ b;
+  }
+  print("Control de flujo con try-catch");
+  try {
+    int resultado = dividir(10, 2);
+    print("Resultado: $resultado");
+    int error = dividir(0, 10);
+    print("Este mensaje no se imprime $error");
+  } catch (e) {
+    print("Error capturado: $e");
+  } finally {
+    print("Bloque finally SIEMPRE se ejecuta");
+  }
 }
