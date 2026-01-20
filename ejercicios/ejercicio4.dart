@@ -185,7 +185,7 @@ void ejercicio3() {
 
     if(entrada! < numAleatorio) {
       pistas(1);
-    } else if(entrada! > numAleatorio) {
+    } else if(entrada > numAleatorio) {
       pistas(2);
     }
   }
