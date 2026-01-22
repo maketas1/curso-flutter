@@ -51,10 +51,6 @@ void ejercicio1() {
             print("La tarea no esta en la lista");
           }
         }
-        // TODO: Eliminar por nombre
-        // - Lee el nombre de la tarea
-        // - Usa contains() para verificar si existe
-        // - Usa remove() para eliminarla
         break;
         
       case '3':
@@ -102,7 +98,50 @@ void ejercicio1() {
   }
 }
 
+void ejercicio2() {
+  print('╔═══════════════════════════════════════╗');
+  print('║  ANÁLISIS DE CALIFICACIONES           ║');
+  print('╚═══════════════════════════════════════╝\n');
+  
+  List<double> calificaciones = [];
+  
+  
+  for (int i = 1; i <= 10; i++) {
+    stdout.write('Calificación $i (0-10): ');
+    String? input = stdin.readLineSync();
+    double? nota = double.tryParse(input ?? '0');
+    
+    if (nota == null || nota < 0 || nota > 10) {
+      print('❌ Calificación inválida');
+      i--;
+      continue;
+    }
+    
+    calificaciones.add(nota);
+  }
+
+  double promedio = calificaciones.isEmpty ? 0 : calificaciones.reduce((a, b) => a + b) / calificaciones.length;
+  print("Promedio: $promedio");
+
+  double notaMax = calificaciones.isEmpty ? 0 : calificaciones.reduce((a, b) => a < b ? b : a);
+  double notaMin = calificaciones.isEmpty ? 0 : calificaciones.reduce((a, b) => a > b ? b : a);
+  print("Nota maxima: $notaMax");
+  print("Nota minima: $notaMin");
+
+  var aprobadas = calificaciones.where((nota) => nota >= 5);
+  print("Nº aprobadas: ${aprobadas.length}");
+
+  var sobreasalientes = calificaciones.where((nota) => nota >= 9);
+  print("Nº sobreasalientes: ${sobreasalientes.length}");
+
+  calificaciones.sort();
+  print(calificaciones);
+}
+
 void main() {
   print("Ejercicio 1");
   ejercicio1();
+
+  print("Ejercicio 2");
+  ejercicio2();
 }
