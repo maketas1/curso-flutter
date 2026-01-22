@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 
 void mostrarTodos(List<String> tareas) {
   if(tareas.isEmpty == true) {
