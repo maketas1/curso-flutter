@@ -171,7 +171,7 @@ void ejercicio3() {
   var mayores10 = numeros.where((numero) => numero > 50).toList();
   print("Nº mayores que 50: $mayores10");
 
-  var multiplos3 = numeros.map((numero) => numero % 3 == 0);
+  var multiplos3 = numeros.where((numero) => numero % 3 == 0).toList();
   print("Nº multiplos de 3: $multiplos3");
 
   print('\n═══ ANY y EVERY (verificar) ═══');
@@ -188,6 +188,10 @@ void ejercicio3() {
 
 }
 
+void ejercicio4() {
+
+}
+
 void main() {
   print("Ejercicio 1");
   ejercicio1();
@@ -197,4 +201,7 @@ void main() {
 
   print("Ejercicio 3");
   ejercicio3();
+
+  print("Ejercicio 4");
+  ejercicio4();
 }
