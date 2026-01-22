@@ -189,7 +189,26 @@ void ejercicio3() {
 }
 
 void ejercicio4() {
+  var inventario = Inventario();
 
+  inventario.agregarProducto('Laptop', 10, 899.99);
+  inventario.agregarProducto('Mouse', 3, 25.50);
+  inventario.agregarProducto('Teclado', 15, 49.99);
+  inventario.agregarProducto('Monitor', 2, 199.99);
+  
+  // TODO: Implementa el menú interactivo
+  inventario.mostrarLista();
+  
+  print('\n═══ VALOR TOTAL ═══');
+  print('Total: €${inventario.calcularValorTotal().toStringAsFixed(2)}');
+  
+  print('\n═══ STOCK BAJO ═══');
+  var stockBajo = inventario.obtenerStockBajo();
+  if (stockBajo.isEmpty) {
+    print('✅ No hay productos con stock bajo');
+  } else {
+    print('⚠️ Productos con stock bajo: $stockBajo');
+  }
 }
 
 void main() {
@@ -204,4 +223,75 @@ void main() {
 
   print("Ejercicio 4");
   ejercicio4();
+}
+
+class Inventario {
+  List<String> productos = [];
+  List<int> cantidades = [];
+  List<double> precios = [];
+
+  void agregarProducto(String nombre, int cantidad, double precio) {
+    productos.add(nombre);
+    cantidades.add(cantidad);
+    precios.add(precio);
+    print('✅ Producto añadido');
+  }
+
+  int buscarProducto(String nombre) {
+    return productos.indexOf(nombre);
+  }
+
+  void actualizarCantidad(String nombre, int nuevaCantidad) {
+    int index = buscarProducto(nombre);
+    if (index != -1) {
+      cantidades[index] = nuevaCantidad;
+      print('✅ Cantidad actualizada');
+    } else {
+      print('❌ Producto no encontrado');
+    }
+  }
+
+  void eliminarproducto(String nombre) {
+    int index = buscarProducto(nombre);
+    if(index != -1) {
+      productos.removeAt(index);
+      cantidades.removeAt(index);
+      precios.removeAt(index);
+      print('✅ Producto eliminado');
+    } else {
+      print('❌ Producto no encontrado');
+    }
+  }
+
+  void mostrarLista() {
+    if (productos.isEmpty) {
+      print('📦 Inventario vacío');
+      return;
+    }
+    
+    print('\n╔════════════════════════════════════════════════╗');
+    print('║              INVENTARIO COMPLETO               ║');
+    print('╚════════════════════════════════════════════════╝');
+    for(int i = 0; i < productos.length; i++) {
+      print("Indice: $i, Producto: ${productos[i]}, Cantidad: ${cantidades[i]}, Subtotal: ${precios[i].toStringAsFixed(2)}€, Total: ${(precios[i] * cantidades[i]).toStringAsFixed(2)}€");
+    }
+  }
+
+  double calcularValorTotal() {
+    double total = 0;
+    for(int i = 0; i < productos.length; i++) {
+      total = total + (precios[i] * cantidades[i]); 
+    }
+    return total;
+  }
+
+  List<String> obtenerStockBajo() {
+    List<String> stock = [];
+    for(int i = 0; i < productos.length; i++) {
+      if(cantidades[i] < 5) {
+        stock.add(productos[i]);
+      }
+    }
+    return stock;
+  }
 }
