@@ -10,7 +10,7 @@ void mostrarTodos(List<String> tareas) {
         }
 }
 
-void ejercicio1() {
+void ejercicio1() {                                                  
   List<String> tareas = [];
   bool continuar = true;
   
@@ -209,6 +209,9 @@ void ejercicio4() {
   } else {
     print('⚠️ Productos con stock bajo: $stockBajo');
   }
+
+  inventario.ordenarProductos2();
+  inventario.mostrarLista();
 }
 
 void ejercicio5() {
@@ -343,5 +346,27 @@ class Inventario {
       }
     }
     return stock;
+  }
+  void ordenarProductos2() {
+    for(int i = 0; i < precios.length; i++) {
+      for(int a = 0; a < precios.length; a++) {
+        if(precios[a] > precios[i]) {
+          cambio(a, i);
+        }
+      }
+    }
+  }
+  void cambio (int indiceNuevoPos, int indiceAntiguoPos) {
+    double precioAntiguo = precios[indiceAntiguoPos];
+    precios[indiceAntiguoPos] = precios[indiceNuevoPos];
+    precios[indiceNuevoPos] = precioAntiguo;
+
+    int cantidadAntiguo = cantidades[indiceAntiguoPos];
+    cantidades[indiceAntiguoPos] = cantidades[indiceNuevoPos];
+    cantidades[indiceNuevoPos] = cantidadAntiguo;
+
+    String productoAntiguo = productos[indiceAntiguoPos];
+    productos[indiceAntiguoPos] = productos[indiceNuevoPos];
+    productos[indiceNuevoPos] = productoAntiguo;
   }
 }
