@@ -125,5 +125,5 @@ void main() {
   ejercicio1();
 
   print("Ejercicio 2");
-  //ejercicio2();
+  ejercicio2();
 }
