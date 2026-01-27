@@ -1,3 +1,5 @@
+import '../ejemplos/ejemplo7Funciones.dart';
+
 Function aumentar = (Map<String, dynamic> contador) {
   return () { 
     contador["n"] += 1;
@@ -46,6 +48,21 @@ Map<String, dynamic> crearContador () {
   return contador;
 }
 
+Map<String, Function> crearContardor1() {
+  int contador = 0;
+  return {
+    "incrementar" : () => ++contador,
+    "decrementar" : () => --contador,
+    "obtenerValor" : () => contador,
+    "reiniciar" : () {
+      contador = 0;
+      print("Contador reiniciado a 0");
+    },
+    "sumar" : (int n) => contador+=n,
+    "restar" : (int n) => contador-=n
+  };
+}
+
 void ejercicio1() {
   var map = crearContador();
   print(map["aumentar"]());
@@ -55,7 +72,33 @@ void ejercicio1() {
   print(map["sumar"](5));
 }
 
+//Funciones auxiliares
+bool esPar(int n) => n% 2 == 0;
+int duplicar(int n) => n * 2;
+int sumarTodos(int a, int b) => a + b;
+int alCuadrado(int n) => n * n;
+bool esMultiplo(int n, int d) => n % d == 0;
+
+List<int> aplicarOperacion(List<int> lista, int Function(int) operacion) {
+  // List resultado = [];
+  // for(var elemento in lista) {
+  //   resultado.add(operacion(elemento));
+  // }
+  // return resultado;
+  return lista.map(operacion).toList();
+}
+
+void ejercicio2() {
+  var numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+  print(numeros);
+  print("Duplicados: ${aplicarOperacion(numeros, duplicar)}");
+  print("Duplicados: ${aplicarOperacion(numeros, cuadrado)}");
+}
+
 void main() {
   print("Ejercicio 1");
   ejercicio1();
+
+  print("Ejercicio 2");
+  ejercicio2();
 }
