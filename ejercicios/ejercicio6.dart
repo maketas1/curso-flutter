@@ -97,12 +97,22 @@ List<int> filtrarPor(List<int> lista, bool Function(int) condicion) {
   return lista.where(condicion).toList();
 }
 
+int combinar(List<int> lista, int Function(int , int) combinador) {
+  int resultado = lista[0];
+  for(int i = 1; i < lista.length; i++) {
+    resultado = combinador(resultado, lista[i]);
+  }
+  return resultado;
+}
+
 void ejercicio2() {
   var numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
   print(numeros);
   print("Duplicados: ${aplicarOperacion(numeros, duplicar)}");
   print("Cuadrados: ${aplicarOperacion(numeros, cuadrado)}");
   print("Par: ${filtrarPor(numeros, esPar)}");
+  print("Combinador: ${combinar(numeros, sumarTodos)}");
+
 }
 
 void main() {
