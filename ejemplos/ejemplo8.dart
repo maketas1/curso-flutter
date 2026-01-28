@@ -121,4 +121,11 @@ void main() {
   Producto producto1 = Producto("Telefono", 50.0);
   producto1.agregarStock(20);
   print(producto1.toString());
+
+  Motor motor1 = Motor("V8", 2000, 100);
+  Conductor conductor1 = Conductor("Ángel", 22, "B1");
+  Auto auto1 = Auto("Ford", "GT40", motor1);
+  auto1.mostrarDetalles();
+  auto1.asignarConductor(conductor1);
+  auto1.mostrarDetalles();
 }
