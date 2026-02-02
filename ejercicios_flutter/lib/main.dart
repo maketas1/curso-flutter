@@ -1,4 +1,4 @@
-import 'package:ejercicios_flutter/ejercicios_1/ejercicio1_1.dart';
+import 'package:ejercicios_flutter/ejercicios_1/ejercicio1.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: true,
       // home: MyText(),
-      home: ejercicio1_1(),
+      home: ejercicio1(),
     );
   }
 }
