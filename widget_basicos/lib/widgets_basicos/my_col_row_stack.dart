@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class MyColRowStack extends StatelessWidget {
@@ -200,6 +202,12 @@ class MyColRowStack extends StatelessWidget {
       ],
     );
 
+    List<Widget> listaChip = List.filled(20, Chip(label: Text('${Random().nextInt(200)}')));
+
+    Wrap wrap2 = Wrap(
+      children: listaChip,
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Column, Row & Stack"),
@@ -244,6 +252,14 @@ class MyColRowStack extends StatelessWidget {
                 stack1,
                 Divider(),
                 wrap1,
+                Divider(),
+                wrap2,
+                Wrap(
+                  children: () {
+                    List<Widget> lista = [];
+                    return lista;
+                  }.call(),
+                )
               ],
             ),
           ),
