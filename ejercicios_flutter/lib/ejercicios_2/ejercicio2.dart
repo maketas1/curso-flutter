@@ -236,57 +236,80 @@ Text texto(String texto) {
   );
 }
 
-Text id(String id) {
+Text idCantidad(String idCantidad) {
   return Text(
-    id,
+    idCantidad,
     style: TextStyle(
       fontSize: 20,
     ),
   );
 }
 
-Text cantidad(String cantidad) {
-  return Text(
-    cantidad,
-    style: TextStyle(
-      fontSize: 20,
-    ),
-  );
-}
+var icono4 = Icon(
+                Icons.check,
+                size: 20,
+                color: Colors.green
+              );
+var icono5 = Icon(
+                Icons.alarm,
+                size: 20,
+                color: Colors.orange
+              );
+var icono6 = Text(
+                "X ",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.red
+                ),
+              );
 
-Row estado(String estado) {
+Row estados(String estado) {
   return Row(
     children: [
+      estado == "Completado" ? icono4 : estado == "Pendiente" ? icono5 : icono6,
       Text(
         estado,
         style: TextStyle(
           fontSize: 20,
+          color: estado == "Completado" ? Colors.green : estado == "Pendiente" ? Colors.orange : Colors.red,
         ),
       )
     ],
   );
 }
 
-Container container3(double ancho) {
-  double alto = 50;
+Container container3_1(Row row, double alto, double ancho) {
   return Container(
-    height: 400,
+    height: alto,
     width: ancho,
-    margin: EdgeInsets.all(20),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      // borderRadius: BorderRadius.circular(15),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black.withAlpha(123),
-          offset: Offset(2, 2),
-          blurRadius: 5,
-        ),
-      ]
-    ),
-    child: Column(
-      children: [
-        Container(
+    padding: EdgeInsets.all(10),
+    child: row,
+  );
+}
+
+Row container3_2(Text id, Text cantidad, Row estado) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Expanded(
+        flex: 1,
+        child: id
+      ),
+      Expanded(
+        flex: 1,
+        child: cantidad
+      ),
+      Flexible(
+        flex: 1,
+        child: estado,
+      )
+    ],
+  );
+}
+
+Container container3_3(double ancho, double alto) {
+  return Container(
           height: alto,
           width: ancho,
           decoration: BoxDecoration(
@@ -302,17 +325,59 @@ Container container3(double ancho) {
                 child: texto("ID")
               ),
               Expanded(
-                flex: 2,
+                flex: 1,
                 child: texto("Cantidad")
               ),
               Flexible(
-                flex: 2,
+                flex: 1,
                 child: texto("Estado")
               )
             ],
           ),
-        )
-      ],
+        );
+}
+
+Divider divisor = Divider(
+                  color: Colors.grey,
+                  height: 10,
+                  indent: 15,
+                  endIndent: 15,
+                );
+
+Container container3(double ancho) {
+  double alto = 50;
+  return Container(
+    height: 350,
+    width: ancho,
+    // margin: EdgeInsets.all(20),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      // borderRadius: BorderRadius.circular(15),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withAlpha(123),
+          offset: Offset(2, 2),
+          blurRadius: 5,
+        ),
+      ]
     ),
+    child: Column(
+      children: () {
+        List<Widget> lista = [];
+        lista.add(container3_3(ancho, alto));
+        for(int i = 0; i < transacciones.length; i++) {
+          Map mapa = transacciones[i];
+          Text id = idCantidad(mapa["id"]);
+          Text cantidad = idCantidad(mapa["monto"]);
+          Row estado1 = estados(mapa["estado"]);
+          Row row = container3_2(id, cantidad, estado1);
+          lista.add(container3_1(row, alto, ancho));
+          if(i < transacciones.length - 1) {
+            lista.add(divisor);
+          }
+        }
+        return lista;
+      }.call(),
+    )
   );
 }
