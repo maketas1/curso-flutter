@@ -257,6 +257,9 @@ class MyColRowStack extends StatelessWidget {
                 Wrap(
                   children: () {
                     List<Widget> lista = [];
+                    for(int i = 0; i<5;i++) {
+                      lista.add(Text(i.toString()));
+                    }
                     return lista;
                   }.call(),
                 )
