@@ -42,7 +42,7 @@ class Ejercicio2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double alto = 1200;
-    double ancho = MediaQuery.of(context).size.height;
+    double ancho = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("Dashboard")),
@@ -101,17 +101,17 @@ Container container1(double ancho) {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        cards1(icono1, usuariosActivos.toString(), "Usuarios activos", cambioUsuarios),
-        cards1(icono2, ingresos.toString(), "Ingresos", cambioIngresos),
-        cards1(icono3, '${tasaConversion.toString()}%', "Conversión", cambioConversion)
+        cards1(icono1, usuariosActivos.toString(), "Usuarios activos", cambioUsuarios, ancho),
+        cards1(icono2, ingresos.toString(), "Ingresos", cambioIngresos, ancho),
+        cards1(icono3, '${tasaConversion.toString()}%', "Conversión", cambioConversion, ancho)
       ],
     ),
   );
 }
 
-Container cards1(Icon icono, String cifra, String descripcion, int porcentaje) {
+Container cards1(Icon icono, String cifra, String descripcion, int porcentaje, double ancho) {
   return Container(
-    width: 125,
+    width: ancho / 3.5,
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(15),
@@ -240,7 +240,7 @@ Text idCantidad(String idCantidad) {
   return Text(
     idCantidad,
     style: TextStyle(
-      fontSize: 20,
+      fontSize: 15,
     ),
   );
 }
@@ -270,7 +270,7 @@ Row estados(String estado) {
       Text(
         estado,
         style: TextStyle(
-          fontSize: 20,
+          fontSize: 15,
           color: estado == "Completado" ? Colors.green : estado == "Pendiente" ? Colors.orange : Colors.red,
         ),
       )
